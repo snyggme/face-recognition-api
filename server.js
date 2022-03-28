@@ -18,6 +18,8 @@ const db = require('knex')({
     }
 });
 
+const PORT = process.env.PORT || 3000;
+
 const app = express();
 
 app.use(express.urlencoded({extended: false}));
@@ -31,6 +33,6 @@ app.get('/profile/:id', profile.handleProfile(db));
 app.put('/image', image.handleImage(db));
 app.post('/imageurl', image.handleApiCall);
 
-app.listen(3000, () => {
-    console.log('app is running on port 3000')
+app.listen(PORT, () => {
+    console.log(`app is running on port ${PORT}`)
 })
